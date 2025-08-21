@@ -11,6 +11,13 @@ body {
   border-radius: 8px;
 }
 
+
+
+table td input {
+  width: 95%; 
+  box-sizing: border-box;
+}
+
 .table td, .table th { text-align: center; }
 .btn-container {
   text-align: center;
@@ -19,6 +26,8 @@ body {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+
 @media (max-width: 576px) {
   .bill-container { padding: 12px; }
   .table { font-size: 14px; }
