@@ -9,14 +9,6 @@ body {
   padding: 20px;
   border: 2px solid #000;
   border-radius: 8px;
-  background-image: url("vegii5.jpg");
-  background-position: center;
-           
-}
-
-.bill-container .bill-header
-{
-   color: #fff;
 }
 
 .table td, .table th { text-align: center; }
