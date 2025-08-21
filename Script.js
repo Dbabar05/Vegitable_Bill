@@ -5,12 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Build one empty row
   const buildRowHTML = () => `
     <tr>
-      <td><input type="number" class="form-control noBox" min="0" step="1" /></td>
-      <td><input type="number" class="form-control oneBoxWeight" min="0" step="0.01" /></td>
-      <td><input type="number" class="form-control totalWeight" readonly /></td>
-      <td><input type="number" class="form-control rate" min="0" step="0.01" /></td>
-      <td><input type="number" class="form-control amount" readonly /></td>
-      <td class="text-center"><button type="button" class="btn btn-danger btn-sm removeRow">X</button></td>
+      <td><input type="number" class="small-input noBox" min="0" step="1" /></td>
+      <td><input type="number" class="small-input oneBoxWeight" min="0" step="0.01" /></td>
+      <td><input type="number" class="large-input totalWeight" readonly /></td>
+      <td><input type="number" class="small-input rate" min="0" step="0.01" /></td>
+      <td><input type="number" class="large-input amount" readonly /></td>
     </tr>
   `;
 
@@ -28,16 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTotals();
   });
 
-  // Remove Row (min 10 kept)
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("removeRow")) {
-      const rows = tbody.querySelectorAll("tr").length;
-      if (rows > MIN_ROWS) {
-        e.target.closest("tr").remove();
-        updateTotals();
-      }
-    }
-  });
+ 
 
   // Live calculations
   document.addEventListener("input", (e) => {
