@@ -11,12 +11,12 @@ body {
   border-radius: 8px;
 }
 
-/* General styling for table inputs */
+/* General styling for table inputs
 table td input {
   font-size: 14px;
   box-sizing: border-box;
   text-align: right;
-}
+} */
 
 /* Small columns (3 digits) */
 table td input.small-input {
@@ -30,7 +30,7 @@ table td input.large-input {
   border-radius: 5px;
 }
 
-
+/* 
 .table td, .table th { text-align: center; }
 .btn-container {
   text-align: center;
@@ -38,18 +38,8 @@ table td input.large-input {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-}
+} */
 
-
-
-input[type="number"] {
-  width: 95%;   /* enough for 3–4 digits */
-}
-
-button.btn {
-  font-size: 18px;   /* smaller text */
-  padding: 2px 6px;  /* smaller button */
-}
 
 
 
