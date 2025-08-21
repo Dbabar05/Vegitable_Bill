@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>R.M. टोमॅटो, डोबळी सप्लायर्स - Bill</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Marathi font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="bill-container">
+  <!-- Header -->
+  <div class="bill-header text-center">
+    <h2 class="fw-bold">R.M. टोमॅटो, डोबळी सप्लायर्स</h2>
+    <p>पत्ता: मु. पो. खंडाळी, ता. मोहोल, जि. सोलापूर</p>
+    <p>मोबाईल: 8378921165, 7776802362</p>
+  </div>
+
+  <!-- Bill Info -->
+  <div class="row g-3 mb-3">
+    <div class="col-12 col-md-6 text-light">
+      <label class="form-label">दिनांक / Date</label>
+      <input type="date" id="billDate" class="form-control" />
+    </div>
+    <div class="col-12 col-md-6 text-light">
+      <label class="form-label">नाव / Name</label>
+      <input type="text" id="customerName" class="form-control" placeholder="ग्राहकाचे नाव" />
+    </div>
+  </div>
+
+  <!-- Items Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle" id="billTable">
+      <thead class="table-secondary text-center">
+        <tr>
+          <th>No. of Box</th>
+          <th>1 Box Weight (Kg)</th>
+          <th>Total Weight (Kg)</th>
+          <th>Rate (₹)</th>
+          <th>Amount (₹)</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody><!-- rows added by JS --></tbody>
+      <tfoot>
+        <tr class="table-info fw-bold">
+          <td colspan="6" class="text-start">Total Boxes: <span id="totalBoxes">0</span></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <button type="button" class="btn btn-success mb-3" id="addRow">➕ Add Row</button>
+
+  <!-- Summary -->
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <tr>
+        <th style="width:60%">Amount</th>
+        <td><span id="subTotal">0.00</span></td>
+      </tr>
+      <tr>
+        <th>Commision</th>
+        <td><input type="number" id="comm" class="form-control" value="0" step="0.01" /></td>
+      </tr>
+      <tr>
+        <th>Transport Charges</th>
+        <td><input type="number" id="transport" class="form-control" value="0" step="0.01" /></td>
+      </tr>
+      <tr>
+        <th>Previous Balance</th>
+        <td><input type="number" id="privbal" class="form-control" value="0" step="0.01" /></td>
+      </tr>
+      <tr>
+        <th>Advance</th>
+        <td><input type="number" id="advance" class="form-control" value="0" step="0.01" /></td>
+      </tr>
+      <tr class="table-success fw-bold">
+        <th>Total</th>
+        <td><span id="grandTotal">0.00</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="btn-container">
+    <button type="button" class="btn btn-primary" id="printBtn">🖨️ Print</button>
+    <button type="button" class="btn btn-warning" id="saveBtn">💾 Save</button>
+  </div>
+</div>
+
+<!-- html2pdf -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+<!-- App script -->
+<script src="script.js"></script>
+</body>
+</html>
