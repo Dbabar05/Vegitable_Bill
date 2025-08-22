@@ -63,12 +63,13 @@
   <div class="table-responsive">
     <table class="table table-bordered" style="border-color: rgb(205, 205, 205)">
       
-        <tr class="table-success fw-bold">
-        <td>Ammount</td>
-        <td><span id="grandTotal">0.00</span></td>
+      <!-- Subtotal -->
+      <tr class="table-success fw-bold">
+        <td>Amount</td>
+        <td><span id="subTotal">0.00</span></td>
       </tr>
-      
 
+      <!-- Commission -->
       <tr>
         <td>
           <label class="fw-bold">Commission</label>
@@ -82,6 +83,7 @@
         </td>
       </tr>
 
+      <!-- P.P. Charges -->
       <tr>
         <td>
           <label class="fw-bold">P.P. Charges</label>
@@ -95,21 +97,25 @@
         </td>
       </tr>
 
+      <!-- Transport -->
       <tr>
         <td><label class="fw-bold">Transport Charges</label></td>
         <td><input type="number" id="transport" class="form-control" value="0" step="0.01" /></td>
       </tr>
 
+      <!-- Previous Balance -->
       <tr>
         <td><label class="fw-bold">Previous Balance</label></td>
         <td><input type="number" id="privbal" class="form-control" value="0" step="0.01" /></td>
       </tr>
 
+      <!-- Advance -->
       <tr>
         <td><label class="fw-bold">Advance</label></td>
         <td><input type="number" id="advance" class="form-control" value="0" step="0.01" /></td>
       </tr>
 
+      <!-- Custom -->
       <tr>
         <td>
           <label class="fw-bold">Write here</label>
@@ -120,16 +126,19 @@
         </td>
       </tr>
 
+      <!-- Grand Total -->
       <tr class="table-success fw-bold">
         <td>Total</td>
         <td><span id="grandTotal">0.00</span></td>
       </tr>
 
+      <!-- Amount Received -->
       <tr>
         <td><label class="fw-bold">Amount Received</label></td>
         <td><input type="number" id="amtReceived" class="form-control" value="0" step="0.01" /></td>
       </tr>
 
+      <!-- Net Balance -->
       <tr class="table-info fw-bold">
         <td>Net Balance</td>
         <td><span id="netBalance">0.00</span></td>
@@ -147,7 +156,6 @@
 <!-- html2pdf -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 <!-- Custom JS -->
-<script src="Script.js?v=3"></script>
+<script src="script.js?v=1"></script>
 </body>
 </html>
-

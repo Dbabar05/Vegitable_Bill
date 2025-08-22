@@ -85,14 +85,17 @@ function updateTotals() {
     subTotal += amount;
   });
 
+  // update subtotal
   document.getElementById("subTotal").innerText = toFixed2(subTotal);
   document.getElementById("totalBoxes").innerText = totalBoxes;
 
+  // commissions
   const commQty = parseFloat(document.getElementById("commQty").value) || 0;
   const commRate = parseFloat(document.getElementById("commRate").value) || 0;
   const commTotal = commQty * commRate;
   document.getElementById("commTotal").value = toFixed2(commTotal);
 
+  // PP Charges
   const ppQty = parseFloat(document.getElementById("ppQty").value) || 0;
   const ppRate = parseFloat(document.getElementById("ppRate").value) || 0;
   const ppTotal = ppQty * ppRate;
