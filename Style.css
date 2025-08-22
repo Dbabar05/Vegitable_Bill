@@ -2,6 +2,7 @@ body {
   font-family: 'Noto Sans Devanagari', Arial, sans-serif;
   background: #f9f9f9;
 }
+
 .bill-container {
   max-width: 980px;
   margin: 20px auto;
@@ -11,43 +12,59 @@ body {
   border-radius: 8px;
 }
 
-/* General styling for table inputs
-table td input {
-  font-size: 14px;
-  box-sizing: border-box;
-  text-align: right;
-} */
+.bill-container img {
+  max-width: 350px; /* adjust watermark size */
+}
 
-/* Small columns (3 digits) */
+
 table td input.small-input {
-  width: 50px;      /* enough for 3 digits */
-  border-radius: 5px;
+  width: 50px;
+  border-radius: 3px;
+  border: 1px solid #292929;
 }
 
-/* Large columns (7 digits) */
 table td input.large-input {
-  width: 100px;     /* enough for 7 digits */
-  border-radius: 5px;
+  width: 100px;
+  border-radius: 3px;
+  border: 1px solid #292929;
 }
 
-/* 
-.table td, .table th { text-align: center; }
+table td input.form-control {
+  margin: 0;
+  padding: 2px 6px;
+  height: auto;
+  font-size: 14px;
+}
+
+.table-responsive .form-control
+{
+ border: 1px solid #292929;
+}
 .btn-container {
-  text-align: center;
-  gap: 10px;
+  margin-top: 10px;
   display: flex;
-  justify-content: center;
+  gap: 10px;
   flex-wrap: wrap;
-} */
+}
 
+/* Page-break handling */
+.table-responsive, #billTable, table {
+  page-break-inside: auto;
+}
 
-
+tfoot, tr {
+  page-break-inside: avoid;
+}
 
 @media (max-width: 576px) {
   .bill-container { padding: 12px; }
   .table { font-size: 14px; }
 }
+
 @media print {
+  body { background: white !important; }
+  .bill-container { border: none !important; box-shadow: none !important; }
   #addRow, #saveBtn, #printBtn { display: none !important; }
-  .bill-container { border: none; }
+  thead { display: table-header-group; }
+  tfoot { display: table-footer-group; }
 }

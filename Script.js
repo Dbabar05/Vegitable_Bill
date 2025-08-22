@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const tbody = document.querySelector("#billTable tbody");
   const MIN_ROWS = 5;
 
-  // Build one empty row
   const buildRowHTML = () => `
     <tr>
       <td><input type="number" class="small-input noBox" min="0" step="1" /></td>
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </tr>
   `;
 
-  // Ensure at least MIN_ROWS rows exist
   function ensureMinRows() {
     const current = tbody.querySelectorAll("tr").length;
     for (let i = current; i < MIN_ROWS; i++) {
@@ -21,53 +19,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Add Row
   document.getElementById("addRow").addEventListener("click", () => {
     tbody.insertAdjacentHTML("beforeend", buildRowHTML());
     updateTotals();
   });
 
- 
-
-  // Live calculations
   document.addEventListener("input", (e) => {
     if (
       e.target.classList.contains("noBox") ||
       e.target.classList.contains("oneBoxWeight") ||
       e.target.classList.contains("rate") ||
-      ["comm","transport","privbal","advance"].includes(e.target.id)
+      ["commQty","commRate","ppQty","ppRate","transport","privbal","advance","amtReceived","writeHereNum"].includes(e.target.id)
     ) {
       updateTotals();
     }
   });
 
-  // Print
   document.getElementById("printBtn").addEventListener("click", () => window.print());
 
-  // Save PDF
   document.getElementById("saveBtn").addEventListener("click", () => {
-    updateTotals(); // refresh numbers
+    updateTotals();
     const element = document.querySelector(".bill-container");
+
+    let name = document.getElementById("custName")?.value.trim() || "NoName";
+    let date = document.getElementById("billDate")?.value.trim() || new Date().toISOString().split("T")[0];
+
+    name = name.replace(/\s+/g, "_");
+    date = date.replace(/\//g, "-").replace(/\\/g, "-");
 
     const opt = {
       margin: [10, 10, 10, 10],
-      filename: 'bill.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
+      filename: `${name}_${date}.pdf`,
+      image: { type: 'jpeg', quality: 1.0 },
+      html2canvas: { scale: 2.5, useCORS: true, scrollY: 0, logging: false },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      pagebreak: { mode: ['css', 'legacy'] }
     };
 
     html2pdf().from(element).set(opt).save();
   });
 
-  // Init
   ensureMinRows();
   updateTotals();
 });
 
-// Helpers
-function toFixed2(n) { return (parseFloat(n) || 0).toFixed(2); }
+function toFixed2(n) {
+  return (parseFloat(n) || 0).toFixed(2);
+}
 
 function updateTotals() {
   let subTotal = 0, totalBoxes = 0;
@@ -90,11 +88,25 @@ function updateTotals() {
   document.getElementById("subTotal").innerText = toFixed2(subTotal);
   document.getElementById("totalBoxes").innerText = totalBoxes;
 
-  const comm      = parseFloat(document.getElementById("comm")?.value) || 0;
-  const transport = parseFloat(document.getElementById("transport")?.value) || 0;
-  const privbal   = parseFloat(document.getElementById("privbal")?.value) || 0;
-  const advance   = parseFloat(document.getElementById("advance")?.value) || 0;
+  const commQty = parseFloat(document.getElementById("commQty").value) || 0;
+  const commRate = parseFloat(document.getElementById("commRate").value) || 0;
+  const commTotal = commQty * commRate;
+  document.getElementById("commTotal").value = toFixed2(commTotal);
 
-  const grandTotal = subTotal + comm + transport + privbal - advance;
+  const ppQty = parseFloat(document.getElementById("ppQty").value) || 0;
+  const ppRate = parseFloat(document.getElementById("ppRate").value) || 0;
+  const ppTotal = ppQty * ppRate;
+  document.getElementById("ppTotal").value = toFixed2(ppTotal);
+
+  const transport = parseFloat(document.getElementById("transport").value) || 0;
+  const privbal   = parseFloat(document.getElementById("privbal").value) || 0;
+  const advance   = parseFloat(document.getElementById("advance").value) || 0;
+  const writeHereNum = parseFloat(document.getElementById("writeHereNum")?.value) || 0;
+
+  const grandTotal = subTotal + commTotal + ppTotal + transport + privbal + writeHereNum - advance;
   document.getElementById("grandTotal").innerText = toFixed2(grandTotal);
+
+  const amtReceived = parseFloat(document.getElementById("amtReceived").value) || 0;
+  const netBalance = grandTotal - amtReceived;
+  document.getElementById("netBalance").innerText = toFixed2(netBalance);
 }
