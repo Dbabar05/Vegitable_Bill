@@ -12,8 +12,9 @@ body {
   border-radius: 8px;
 }
 
-.bill-container img {
-  max-width: 350px;
+.bill-container, .totals, .summary {
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 
@@ -38,6 +39,20 @@ table td input.form-control {
 
 .table-responsive .form-control {
   border: 1px solid #292929;
+}
+
+
+#billTable tr {
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+}
+
+
+.no-break {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  page-break-before: auto;
+  page-break-after: auto;
 }
 
 .btn-container {

@@ -65,12 +65,12 @@ function cloneForPDF(element) {
     date = date.replace(/\//g, "-").replace(/\\/g, "-");
 
     const opt = {
-      margin: [10, 10, 10, 10],
+      margin: [10, 10, 20, 10],
       filename: `${name}_${date}.pdf`,
       image: { type: 'jpeg', quality: 1.0 },
       html2canvas: { scale: 2.5, useCORS: true, scrollY: 0, logging: false },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak: { mode: ['css', 'legacy'] }
+      pagebreak: { mode: ['css', 'legacy'] , avoid: 'tr'}
     };
 
     html2pdf().from(clone).set(opt).save();
