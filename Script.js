@@ -37,9 +37,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("printBtn").addEventListener("click", () => window.print());
 
+function cloneForPDF(element) {
+  const clone = element.cloneNode(true);
+
+  // Replace all inputs with their values
+  clone.querySelectorAll("input").forEach(input => {
+    const span = document.createElement("span");
+    span.textContent = input.value || ""; 
+    span.style.display = "inline-block";
+    span.style.minWidth = (input.offsetWidth || 40) + "px"; // keep layout
+    input.replaceWith(span);
+  });
+
+  return clone;
+}
+
+
   document.getElementById("saveBtn").addEventListener("click", () => {
     updateTotals();
     const element = document.querySelector(".bill-container");
+    const clone = cloneForPDF(element);
 
     let name = document.getElementById("custName")?.value.trim() || "NoName";
     let date = document.getElementById("billDate")?.value.trim() || new Date().toISOString().split("T")[0];
@@ -56,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       pagebreak: { mode: ['css', 'legacy'] }
     };
 
-    html2pdf().from(element).set(opt).save();
+    html2pdf().from(clone).set(opt).save();
   });
 
   ensureMinRows();

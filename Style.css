@@ -16,8 +16,9 @@ body {
   max-width: 350px;
 }
 
+
 table td input.small-input {
-  width: 70px;
+  width: 50px;
   border-radius: 3px;
   border: 1px solid #292929;
 }
