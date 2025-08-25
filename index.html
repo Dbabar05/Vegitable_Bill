@@ -74,8 +74,8 @@
         <td>
           <label class="fw-bold">Commission</label>
           <div class="d-flex gap-1 mt-1">
-            <input type="number" id="commQty" class="form-control" value="0" step="0.01" placeholder="Qty" />
-            <input type="number" id="commRate" class="form-control" value="0" step="0.01" placeholder="Rate" />
+            <input type="number" id="commQty" class="form-control"  step="0.01" placeholder="Qty" />
+            <input type="number" id="commRate" class="form-control"  step="0.01" placeholder="Rate" />
           </div>
         </td>
         <td class="align-middle">
@@ -88,8 +88,8 @@
         <td>
           <label class="fw-bold">P.P. Charges</label>
           <div class="d-flex gap-1 mt-1">
-            <input type="number" id="ppQty" class="form-control" value="0" step="0.01" placeholder="Qty" />
-            <input type="number" id="ppRate" class="form-control" value="0" step="0.01" placeholder="Rate" />
+            <input type="number" id="ppQty" class="form-control"  step="0.01" placeholder="Qty" />
+            <input type="number" id="ppRate" class="form-control"  step="0.01" placeholder="Rate" />
           </div>
         </td>
         <td class="align-middle">
@@ -100,19 +100,19 @@
       <!-- Transport -->
       <tr>
         <td><label class="fw-bold">Transport Charges</label></td>
-        <td><input type="number" id="transport" class="form-control" value="0" step="0.01" /></td>
+        <td><input type="number" id="transport" class="form-control" placeholder="0" step="0.01" /></td>
       </tr>
 
       <!-- Previous Balance -->
       <tr>
         <td><label class="fw-bold">Previous Balance</label></td>
-        <td><input type="number" id="privbal" class="form-control" value="0" step="0.01" /></td>
+        <td><input type="number" id="privbal" class="form-control" placeholder="0" step="0.01" /></td>
       </tr>
 
       <!-- Advance -->
       <tr>
         <td><label class="fw-bold">Advance</label></td>
-        <td><input type="number" id="advance" class="form-control" value="0" step="0.01" /></td>
+        <td><input type="number" id="advance" class="form-control" placeholder="0" step="0.01" /></td>
       </tr>
 
       <!-- Custom -->
@@ -122,7 +122,7 @@
           <input type="text" id="writeHere" class="form-control mt-1" placeholder="Write here..." />
         </td>
         <td class="align-middle">
-          <input type="number" id="writeHereNum" class="form-control text-start mt-4" value="0" step="0.01" />
+          <input type="number" id="writeHereNum" class="form-control text-start mt-4" placeholder="0" step="0.01" />
         </td>
       </tr>
 
@@ -135,7 +135,7 @@
       <!-- Amount Received -->
       <tr>
         <td><label class="fw-bold">Amount Received</label></td>
-        <td><input type="number" id="amtReceived" class="form-control" value="0" step="0.01" /></td>
+        <td><input type="number" id="amtReceived" class="form-control" placeholder="0" step="0.01" /></td>
       </tr>
 
       <!-- Net Balance -->
@@ -148,8 +148,8 @@
 
   <!-- Buttons -->
   <div class="btn-container">
-    <button type="button" class="btn btn-primary" id="printBtn">🖨️ Print</button>
-    <button type="button" class="btn btn-danger" id="saveBtn">💾 Save</button>
+    <button type="button" class="btn btn-primary " id="printBtn">🖨️ Print</button>
+    <button type="button" class="btn bg-danger bg-gradient " id="saveBtn">💾 Save</button>
   </div>
 </div>
 

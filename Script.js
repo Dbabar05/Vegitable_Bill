@@ -122,8 +122,9 @@ function updateTotals() {
   const privbal   = parseFloat(document.getElementById("privbal").value) || 0;
   const advance   = parseFloat(document.getElementById("advance").value) || 0;
   const writeHereNum = parseFloat(document.getElementById("writeHereNum")?.value) || 0;
+  // const amtReceived   = parseFloat(document.getElementById("amtReceived").value) || 0;
 
-  const grandTotal = subTotal + commTotal + ppTotal + transport + privbal + writeHereNum - advance;
+  const grandTotal = subTotal + commTotal + ppTotal + transport + privbal + writeHereNum + advance;
   document.getElementById("grandTotal").innerText = toFixed2(grandTotal);
 
   const amtReceived = parseFloat(document.getElementById("amtReceived").value) || 0;
